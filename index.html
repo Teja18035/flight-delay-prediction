@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flight Delay Prediction</title>
+        <style>
+            body{
+                background-color: #e8f3f8;
+                font: 1em/1.5 sans-serif;
+            }
+            h1{
+                text-align: center;
+                color: steelblue;
+            }
+            form{
+                width: 200px;
+                margin: auto;
+            }
+            input{
+                padding: 5px;
+                border-radius: 5px;
+            }
+            input[type = "number"]{
+                margin-bottom: 20px;
+                width: 95%;
+                border: 2px solid steelblue;
+                background: #FAF6D9;
+            }
+            button[type = "submit"]{
+                width: 204px;
+                height: 40px;
+                border: 2px solid black;
+                background: steelblue;
+                color: white;
+                border-radius: 5px;
+            }
+            input:focus{
+                background: white;
+            }
+            button[type = "submit"]:focus{
+                width: 204px;
+                height: 40px;
+                border: 2px solid black;
+                background: white;
+                color: steelblue;
+            }
+            div{
+                text-align: center;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Flight Delay Prediction</h1>
+        <form action="{{ url_for('y_predict')}}" method="POST">
+            <input type="number" name="dep_time" placeholder="Departure Time">
+            <input type="number" name="dep_delay" placeholder="Departure Delay">
+            <input type="number" name="arr_time" placeholder="Arrival Time">
+            <input type="number" name="arr_delay" placeholder="Arrival Delay">
+            <button type="submit">Predict</button>
+        </form>
+        <div>
+            {{prediction_text}}
+        </div>
+        
+    </body>
+</html>
